@@ -8,7 +8,7 @@ Simply create a .json file with the schema for your database, and run the artisa
 ## Installation
 You can install this package by running the below composer command:
 ```
-composer require --dev andyabih/json-to-laravel-migrations
+composer require --dev bitsnio/json_to_migration_laravel
 ```
 
 ----
