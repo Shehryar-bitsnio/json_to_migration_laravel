@@ -1,5 +1,5 @@
 {
-    "name": "bitsnio/json-to-laravel-migrations",
+    "name": "bitsnio/json-to-migration-laravel",
     "description": "Turn a JSON schema into Laravel migrations.",
     "type": "library",
     "license": "MIT",
