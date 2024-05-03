@@ -1,5 +1,5 @@
 # JSON to Laravel Migrations
-Simply create a .json file with the schema for your database, and run the artisan command `json:migrate schema.json` to create all the migrations for your project.
+Simply create a .json file with the schema for your database, and run the artisan command `json:migrate Template.json` to create all the migrations for your project.
 
 **Note:** This package is built to be used to kickstart your Laravel projects, and not to use on something that's already been built.
 
@@ -13,8 +13,8 @@ composer require --dev bitsnio/json-to-migration-laravel
 
 ----
 
-## Creating the JSON schema
-Create a `schema.json` file in the root of your project, and use a template like the below:
+## Creating the JSON Template
+Create a `Template.json` file in the root of your project, and use a template like the below:
 ```json
 {
     "posts": {
