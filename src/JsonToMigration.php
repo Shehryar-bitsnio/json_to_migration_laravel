@@ -17,10 +17,10 @@ class JsonToMigration extends Parameters {
      */
     protected $methods;
     
-    public function __construct($jsonPath) {
+    public function __construct($jsonPath, $destinationPath) {
         $this->load($jsonPath);
         $this->parse();
-        $this->create();
+        $this->create($destinationPath);
     }
     
     private function parse() {
@@ -33,8 +33,8 @@ class JsonToMigration extends Parameters {
         $this->schema = $jsonParser->parse();
     }
 
-    private function create() {
+    private function create($destinationPath) {
         $migrationCreator = new MigrationCreator($this->methods);
-        $migrationCreator->create();
+        $migrationCreator->create($destinationPath);
     }
 }

@@ -18,20 +18,20 @@ class MigrationCreator {
         $this->methods = $methods;
     }
 
-    public function create() {
+    public function create($destinationPath) {
         foreach($this->methods as $table => $methods) {
-            $this->createMigration($table, $methods);
+            $this->createMigration($table, $methods, $destinationPath);
             
             // So migrations get created in order
             sleep(1);
         }
     }
 
-    private function createMigration($table, $methods) {
+    private function createMigration($table, $methods, $destinationPath) {
         $filename = $this->generateFileName($table);
         $name     = $this->generateName($table);
         $stub     = $this->createStub($name, $table, $methods);
-        $path     = $this->getPath($filename);
+        $path     = $this->getPath($filename, $destinationPath);
         
         file_put_contents($path, $stub);
     }
@@ -58,7 +58,8 @@ class MigrationCreator {
         return file_get_contents(__DIR__ . '/stubs/migration.stub');
     }
 
-    private function getPath($filename) {
-        return base_path() . '/database/migrations/' . $filename;
+    private function getPath($filename, $destinationPath) {
+        if (!file_exists($destinationPath)) mkdir($destinationPath, 0777, true);
+        return $destinationPath . $filename;
     }
 }
